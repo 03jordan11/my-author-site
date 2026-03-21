@@ -112,6 +112,7 @@ import bookCover from '../assets/TheBookOfJacobFrontCover.jpg';
 		letter-spacing: -0.04em;
 		margin: 0;
 		color: var(--text);
+		animation: fadeUp 0.6s ease 0.08s both;
 	}
 
 	.eyebrow {
@@ -120,6 +121,7 @@ import bookCover from '../assets/TheBookOfJacobFrontCover.jpg';
 		text-transform: uppercase;
 		letter-spacing: 0.18em;
 		font-size: 0.82rem;
+		animation: fadeUp 0.6s ease both;
 	}
 
 	.lede {
@@ -128,6 +130,7 @@ import bookCover from '../assets/TheBookOfJacobFrontCover.jpg';
 		font-size: 1.1rem;
 		line-height: 1.9;
 		color: var(--text-muted);
+		animation: fadeUp 0.6s ease 0.16s both;
 	}
 
 	#links {
@@ -135,6 +138,7 @@ import bookCover from '../assets/TheBookOfJacobFrontCover.jpg';
 		gap: 1rem;
 		flex-wrap: wrap;
 		margin-top: 0.5rem;
+		animation: fadeUp 0.6s ease 0.24s both;
 	}
 
 	#links a {
@@ -170,6 +174,7 @@ import bookCover from '../assets/TheBookOfJacobFrontCover.jpg';
 		gap: 1.25rem;
 		width: min(840px, 100%);
 		margin-top: 1.75rem;
+		animation: fadeUp 0.6s ease 0.34s both;
 	}
 
 	.label {
@@ -303,6 +308,18 @@ import bookCover from '../assets/TheBookOfJacobFrontCover.jpg';
 		display: flex;
 		flex-direction: column;
 		height: 100%;
+	}
+
+	@keyframes fadeUp {
+		from {
+			opacity: 0;
+			transform: translateY(16px);
+		}
+
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 
 	@media screen and (max-width: 768px) {

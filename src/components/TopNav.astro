@@ -10,8 +10,15 @@ const instagramUrl = "https://www.instagram.com/jlburnes_author/";
 ---
 
 <nav>
-  <a href="/" class="logo">
-    <span class="logo-mark" aria-hidden="true">
+  <div class="logo">
+    <a
+      href="https://en.wikipedia.org/wiki/Moons_of_Jupiter"
+      class="logo-mark"
+      target="_blank"
+      rel="noopener"
+      aria-label="Moons of Jupiter"
+      title="Moons of Jupiter"
+    >
       <span class="europa-orbit europa-back">
         <span class="europa"></span>
       </span>
@@ -28,12 +35,12 @@ const instagramUrl = "https://www.instagram.com/jlburnes_author/";
       <span class="europa-orbit europa-front">
         <span class="europa"></span>
       </span>
-    </span>
-    <span class="logo-copy">
+    </a>
+    <a href="/" class="logo-copy">
       <span class="logo-name">{authorName}</span>
       <span class="logo-tag">Author</span>
-    </span>
-  </a>
+    </a>
+  </div>
   <a
     class="social-link"
     href={instagramUrl}
@@ -81,8 +88,6 @@ const instagramUrl = "https://www.instagram.com/jlburnes_author/";
     display: inline-flex;
     align-items: center;
     gap: 0.9rem;
-    text-decoration: none;
-    color: var(--text);
     margin-right: auto;
   }
 
@@ -95,6 +100,7 @@ const instagramUrl = "https://www.instagram.com/jlburnes_author/";
     border-radius: 50%;
     overflow: visible;
     position: relative;
+    flex: 0 0 auto;
   }
 
   .logo-mark::before {
@@ -252,6 +258,8 @@ const instagramUrl = "https://www.instagram.com/jlburnes_author/";
     display: flex;
     flex-direction: column;
     gap: 0.15rem;
+    text-decoration: none;
+    color: var(--text);
   }
 
   .logo-name {

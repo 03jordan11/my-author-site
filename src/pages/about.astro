@@ -19,20 +19,9 @@ import authorImg from '../assets/authorImg.jpg';
         <div class="divider"></div>
         <div class="bio-text">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris.
+            JL. Burnes grew up in Laurel, Mississippi, where a fourth-grade teacher introduced him to storytelling. His writing is influenced by science fiction, fantasy, and speculative stories that explore survival, adventure, and the ever-present wonder in the world. He is a Marine Corps veteran, former blacksmith, and currently works as a software engineer in Texas, where he lives with his wife and children, four cats, and one very patient dog.
           </p>
-          <p>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-            doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore
-            veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-          </p>
+
         </div>
 
         <div class="links">
@@ -62,9 +51,10 @@ import authorImg from '../assets/authorImg.jpg';
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1.6fr;
-    gap: 5rem;
+    grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+    gap: 4rem;
     align-items: start;
+    padding: 2.25rem;
   }
 
   .photo-column {
@@ -74,13 +64,16 @@ import authorImg from '../assets/authorImg.jpg';
     gap: 1rem;
     position: sticky;
     top: 6rem;
+    transform: translateY(-1.75rem);
   }
 
   .photo-frame {
     position: relative;
     width: 100%;
+    max-width: 320px;
     aspect-ratio: 3 / 4;
     overflow: hidden;
+    margin: 0 auto;
   }
 
   .photo-frame::before {
@@ -129,6 +122,7 @@ import authorImg from '../assets/authorImg.jpg';
 
   .bio-column {
     padding-top: 1rem;
+    min-width: 0;
   }
 
   .eyebrow {
@@ -270,12 +264,14 @@ import authorImg from '../assets/authorImg.jpg';
     .about-container {
       grid-template-columns: 1fr;
       gap: 2.5rem;
+      padding: 1.5rem;
     }
 
     .photo-column {
       position: static;
       max-width: 280px;
       margin: 0 auto;
+      transform: none;
     }
   }
 </style>

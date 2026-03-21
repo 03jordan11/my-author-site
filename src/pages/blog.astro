@@ -159,6 +159,7 @@ try {
     gap: 2rem;
     align-items: end;
     padding: 2rem 0 3rem;
+    animation: fadeUp 0.6s ease both;
   }
 
   .eyebrow {
@@ -176,6 +177,7 @@ try {
     line-height: 0.95;
     letter-spacing: -0.04em;
     color: var(--text);
+    animation: fadeUp 0.6s ease 0.08s both;
   }
 
   .intro {
@@ -184,6 +186,7 @@ try {
     color: var(--text-muted);
     font-size: 1.08rem;
     line-height: 1.9;
+    animation: fadeUp 0.6s ease 0.16s both;
   }
 
   .hero-actions {
@@ -191,6 +194,7 @@ try {
     gap: 0.9rem;
     flex-wrap: wrap;
     justify-content: flex-end;
+    animation: fadeUp 0.6s ease 0.22s both;
   }
 
   .primary-link,
@@ -229,6 +233,7 @@ try {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.25rem;
+    animation: fadeUp 0.6s ease 0.32s both;
   }
 
   .post-card,
@@ -269,10 +274,23 @@ try {
 
   .empty-state {
     padding-top: 0.5rem;
+    animation: fadeUp 0.6s ease 0.32s both;
   }
 
   .empty-card {
     max-width: 780px;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @media (max-width: 960px) {
