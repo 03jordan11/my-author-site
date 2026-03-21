@@ -1,6 +1,8 @@
 ---
 import TopNav from "../components/TopNav.astro"
 import "../styles/global.css"
+import bookCover from '../assets/TheBookOfJacobFrontCover.jpg';
+import bookMockup from '../assets/BOJ_MockUp.jpg';
 ---
 
 <!doctype html>
@@ -14,15 +16,126 @@ import "../styles/global.css"
 		<title>J.L. Burnes | Author</title>
 	</head>
 	<body>
+		<div class="site-floating-stage" aria-hidden="true">
+			<img class="site-float site-float-cover" src={bookCover.src} alt="" />
+			<img class="site-float site-float-mockup" src={bookMockup.src} alt="" />
+			<img class="site-float site-float-cover-secondary" src={bookCover.src} alt="" />
+		</div>
 		<TopNav />
 		<slot />
 	</body>
 </html>
+
+<script>
+	const root = document.documentElement;
+	let frame = 0;
+
+	const updatePointer = (event) => {
+		if (frame) return;
+
+		frame = window.requestAnimationFrame(() => {
+			const x = (event.clientX / window.innerWidth - 0.5) * 2;
+			const y = (event.clientY / window.innerHeight - 0.5) * 2;
+
+			root.style.setProperty('--pointer-x', x.toFixed(3));
+			root.style.setProperty('--pointer-y', y.toFixed(3));
+			frame = 0;
+		});
+	};
+
+	const resetPointer = () => {
+		root.style.setProperty('--pointer-x', '0');
+		root.style.setProperty('--pointer-y', '0');
+	};
+
+	window.addEventListener('mousemove', updatePointer);
+	window.addEventListener('mouseleave', resetPointer);
+</script>
 
 <style>
 	html,
 	body {
 		width: 100%;
 		min-height: 100%;
+	}
+
+	body {
+		position: relative;
+		overflow-x: clip;
+	}
+
+	.site-floating-stage {
+		position: fixed;
+		inset: 0;
+		pointer-events: none;
+		overflow: hidden;
+		z-index: 0;
+	}
+
+	.site-float {
+		position: absolute;
+		opacity: 0.14;
+		filter: blur(16px) saturate(0.76);
+		border-radius: 28px;
+		box-shadow: 0 30px 80px rgba(0, 0, 0, 0.32);
+	}
+
+	.site-float-cover {
+		top: 7.5rem;
+		right: -2rem;
+		width: min(16vw, 220px);
+		transform:
+			rotate(12deg)
+			translateX(calc(var(--pointer-x, 0) * -10px))
+			translateY(calc(var(--pointer-y, 0) * -8px));
+	}
+
+	.site-float-mockup {
+		left: -5rem;
+		bottom: 5rem;
+		width: min(30vw, 420px);
+		opacity: 0.1;
+		filter: blur(18px) saturate(0.68);
+		transform:
+			rotate(-10deg)
+			translateX(calc(var(--pointer-x, 0) * 14px))
+			translateY(calc(var(--pointer-y, 0) * 10px));
+	}
+
+	.site-float-cover-secondary {
+		right: 22%;
+		bottom: 8rem;
+		width: min(12vw, 170px);
+		opacity: 0.08;
+		filter: blur(18px) saturate(0.66);
+		transform:
+			rotate(-16deg)
+			translateX(calc(var(--pointer-x, 0) * -8px))
+			translateY(calc(var(--pointer-y, 0) * 7px));
+	}
+
+	body > *:not(.site-floating-stage) {
+		position: relative;
+		z-index: 1;
+	}
+
+	@media (max-width: 768px) {
+		.site-float-cover {
+			top: 5.5rem;
+			right: -3.5rem;
+			width: 150px;
+		}
+
+		.site-float-mockup {
+			left: -6rem;
+			bottom: 7rem;
+			width: 260px;
+		}
+
+		.site-float-cover-secondary {
+			right: -2rem;
+			bottom: 15rem;
+			width: 120px;
+		}
 	}
 </style>
