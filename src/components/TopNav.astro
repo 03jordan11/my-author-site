@@ -1,0 +1,85 @@
+---
+const links = [
+  { href: "/about", label: "About Me" },
+  { href: "/books", label: "Books" },
+  { href: "/blog", label: "Blog" },
+];
+const authorName = "J.L. Burnes"
+---
+
+<nav>
+  <a href="/" class="logo">{authorName}</a>
+  <ul>
+    {links.map(link => (
+      <li><a class="btn btn-ghost" href={link.href}>{link.label}</a></li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2rem;
+    border-bottom: 1px solid rgba(49, 55, 69, 0.9);
+    background: rgba(15, 17, 21, 0.72);
+    backdrop-filter: blur(18px);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  ul {
+    display: flex;
+    gap: 0.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  ul a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0 1rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    color: var(--text-muted);
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  }
+
+  ul a:hover {
+    color: var(--text);
+    border-color: rgba(200, 169, 107, 0.28);
+    background: rgba(200, 169, 107, 0.08);
+  }
+
+  @media (max-width: 720px) {
+    nav {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+    }
+
+    ul {
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+  }
+</style>

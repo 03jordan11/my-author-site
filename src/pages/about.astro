@@ -1,0 +1,281 @@
+---
+import Layout from '../layouts/Layout.astro';
+import authorImg from '../assets/authorImg.jpg';
+---
+
+<Layout>
+  <main class="about-page">
+    <div class="about-container">
+      <div class="photo-column">
+        <div class="photo-frame">
+          <img src={authorImg.src} alt="Author photo" />
+        </div>
+        <div class="photo-caption">writer & storyteller</div>
+      </div>
+
+      <div class="bio-column">
+        <span class="eyebrow">About Me</span>
+        <h1>J.L. Burnes</h1>
+        <div class="divider"></div>
+        <div class="bio-text">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris.
+          </p>
+          <p>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <p>
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+            doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore
+            veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+          </p>
+        </div>
+
+        <div class="links">
+          <a href="/books" class="link-pill">Browse My Books &rarr;</a>
+          <a href="/blog" class="link-pill secondary">Read the Blog &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap');
+
+  .about-page {
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, rgba(200, 169, 107, 0.12) 0%, transparent 45%),
+      radial-gradient(ellipse at 80% 10%, rgba(143, 115, 67, 0.2) 0%, transparent 35%);
+    display: flex;
+    align-items: center;
+    padding: 5rem 2rem;
+    font-family: 'Lora', Georgia, serif;
+  }
+
+  .about-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .photo-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: sticky;
+    top: 6rem;
+  }
+
+  .photo-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border: 1.5px solid rgba(200, 169, 107, 0.32);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 60%,
+      rgba(15, 17, 21, 0.2) 100%
+    );
+    z-index: 1;
+  }
+
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.92) contrast(1.02) brightness(0.92);
+    transition: transform 0.6s ease;
+    border-radius: 2px;
+  }
+
+  .photo-frame:hover img {
+    transform: scale(1.02);
+  }
+
+  .photo-caption {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: lowercase;
+  }
+
+  .bio-column {
+    padding-top: 1rem;
+  }
+
+  .eyebrow {
+    display: block;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    margin-bottom: 0.75rem;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.1;
+    margin: 0 0 1.5rem 0;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+
+  .divider {
+    width: 3rem;
+    height: 1.5px;
+    background: linear-gradient(to right, var(--accent), transparent);
+    margin-bottom: 2rem;
+    animation: expandWidth 0.8s ease 0.2s both;
+  }
+
+  @keyframes expandWidth {
+    from { width: 0; opacity: 0; }
+    to { width: 3rem; opacity: 1; }
+  }
+
+  .bio-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    animation: fadeUp 0.6s ease 0.3s both;
+  }
+
+  .bio-text p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .bio-text p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    font-weight: 600;
+    float: left;
+    line-height: 0.75;
+    margin: 0.1em 0.1em 0 0;
+    color: var(--accent);
+  }
+
+  .links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s ease 0.4s both;
+  }
+
+  .link-pill {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    font-family: 'Lora', serif;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border: 1.5px solid var(--accent);
+    color: var(--text);
+    letter-spacing: 0.03em;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+    background: rgba(200, 169, 107, 0.05);
+  }
+
+  .link-pill::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--accent);
+    transform: translateX(-101%);
+    transition: transform 0.25s ease;
+    z-index: -1;
+  }
+
+  .link-pill:hover {
+    color: #101216;
+  }
+
+  .link-pill:hover::before {
+    transform: translateX(0);
+  }
+
+  .link-pill.secondary {
+    border-color: rgba(200, 169, 107, 0.24);
+    color: var(--text-muted);
+  }
+
+  .link-pill.secondary:hover {
+    color: #101216;
+  }
+
+  .link-pill.secondary::before {
+    background: #d7bc86;
+  }
+
+  .about-container,
+  .bio-column,
+  .photo-column {
+    position: relative;
+  }
+
+  .about-container::before {
+    content: '';
+    position: absolute;
+    inset: -2rem;
+    background: linear-gradient(180deg, rgba(34, 39, 52, 0.4), rgba(23, 26, 33, 0.2));
+    border: 1px solid rgba(200, 169, 107, 0.08);
+    border-radius: 32px;
+    z-index: -1;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 720px) {
+    .about-container {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .photo-column {
+      position: static;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+  }
+</style>
