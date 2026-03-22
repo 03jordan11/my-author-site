@@ -3,6 +3,7 @@ import TopNav from "../components/TopNav.astro"
 import "../styles/global.css"
 import bookCover from '../assets/TheBookOfJacobFrontCover.jpg';
 import bookMockup from '../assets/BOJ_MockUp.jpg';
+import buildMeta from '../data/build-meta.json';
 ---
 
 <!doctype html>
@@ -23,6 +24,9 @@ import bookMockup from '../assets/BOJ_MockUp.jpg';
 		</div>
 		<TopNav />
 		<slot />
+		<footer class="site-footer">
+			<p>Build {buildMeta.version}</p>
+		</footer>
 	</body>
 </html>
 
@@ -117,6 +121,27 @@ import bookMockup from '../assets/BOJ_MockUp.jpg';
 	body > *:not(.site-floating-stage) {
 		position: relative;
 		z-index: 1;
+	}
+
+	.site-footer {
+		padding: 0 1.5rem 2rem;
+		text-align: center;
+	}
+
+	.site-footer p {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0;
+		padding: 0.7rem 1rem;
+		border: 1px solid rgba(200, 169, 107, 0.12);
+		border-radius: 999px;
+		background: rgba(12, 14, 20, 0.6);
+		color: var(--text-muted);
+		font-size: 0.8rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		backdrop-filter: blur(12px);
 	}
 
 	@media (max-width: 768px) {
