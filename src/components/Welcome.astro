@@ -7,6 +7,24 @@ import bookCover from '../assets/TheBookOfJacobFrontCover.jpg';
 	<img id="background" src={background.src} alt="" fetchpriority="high" />
 	<main>
 		<section id="hero">
+			<section id="alpha-callout" aria-label="Alpha reader recruitment">
+				<div class="alpha-copy">
+					<p class="alpha-kicker">Alpha readers needed</p>
+					<h2>Join the early circle and help shape what comes next.</h2>
+					<p>
+						Read works in progress, share honest feedback, and get a first look at new
+						stories before they reach the world.
+					</p>
+				</div>
+				<a
+					class="alpha-button"
+					href="https://forms.gle/RF7YpYrCwRH1yoL98"
+					target="_blank"
+					rel="noopener"
+				>
+					Become an Alpha Reader
+				</a>
+			</section>
 			<p class="eyebrow">Legendary Adventures. Lasting worlds. Unforgettable characters.</p>
 			<h1>Stories built to linger long after the final page.</h1>
 			<p class="lede">
@@ -137,8 +155,8 @@ import bookCover from '../assets/TheBookOfJacobFrontCover.jpg';
 		display: flex;
 		gap: 1rem;
 		flex-wrap: wrap;
-		margin-top: 0.5rem;
-		animation: fadeUp 0.6s ease 0.24s both;
+		margin-top: 0.25rem;
+		animation: fadeUp 0.6s ease 0.3s both;
 	}
 
 	#links a {
@@ -152,20 +170,108 @@ import bookCover from '../assets/TheBookOfJacobFrontCover.jpg';
 		transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 	}
 
-	#links a.button {
-		color: #101216;
-		background: linear-gradient(135deg, #d7bc86 0%, var(--accent) 55%, #a98851 100%);
-		box-shadow: var(--shadow);
-	}
-
 	#links a.secondary {
 		color: var(--text);
 		border: 1px solid rgba(200, 169, 107, 0.28);
 		background: rgba(200, 169, 107, 0.07);
 	}
 
+	#links a.button {
+		color: #101216;
+		background: linear-gradient(135deg, #d7bc86 0%, var(--accent) 55%, #a98851 100%);
+		box-shadow: var(--shadow);
+	}
+
 	#links a:hover {
 		transform: translateY(-2px);
+	}
+
+	#alpha-callout {
+		position: relative;
+		display: grid;
+		grid-template-columns: minmax(0, 1.5fr) auto;
+		gap: 1.5rem;
+		align-items: center;
+		width: min(880px, 100%);
+		margin-bottom: 0.35rem;
+		padding: 1.4rem 1.5rem;
+		border: 1px solid rgba(231, 185, 78, 0.42);
+		border-radius: 18px;
+		background:
+			linear-gradient(135deg, rgba(247, 213, 122, 0.16), rgba(126, 82, 42, 0.14)),
+			linear-gradient(180deg, rgba(44, 32, 18, 0.92), rgba(29, 22, 15, 0.95));
+		box-shadow:
+			0 22px 48px rgba(0, 0, 0, 0.3),
+			inset 0 1px 0 rgba(255, 243, 212, 0.12);
+		overflow: hidden;
+		animation: fadeUp 0.6s ease 0.24s both;
+	}
+
+	#alpha-callout::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(115deg, transparent 20%, rgba(255, 236, 189, 0.16) 50%, transparent 80%);
+		transform: translateX(-55%);
+		animation: alphaSweep 6s ease-in-out infinite;
+		pointer-events: none;
+	}
+
+	.alpha-copy {
+		position: relative;
+		z-index: 1;
+	}
+
+	.alpha-kicker {
+		margin: 0 0 0.55rem;
+		color: #f4d17a;
+		font-size: 0.8rem;
+		font-weight: 700;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+	}
+
+	.alpha-copy h2 {
+		margin: 0;
+		font-size: clamp(1.55rem, 4vw, 2.3rem);
+		line-height: 1.05;
+		max-width: 16ch;
+	}
+
+	.alpha-copy p:last-child {
+		margin: 0.75rem 0 0;
+		max-width: 42rem;
+		color: rgba(243, 239, 231, 0.84);
+		font-size: 1rem;
+		line-height: 1.7;
+	}
+
+	.alpha-button {
+		position: relative;
+		z-index: 1;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 3.5rem;
+		padding: 0 1.45rem;
+		border-radius: 999px;
+		text-decoration: none;
+		color: #101216;
+		font-weight: 700;
+		letter-spacing: 0.02em;
+		background: linear-gradient(135deg, #f8dc8f 0%, #e7b94e 52%, #d49a24 100%);
+		box-shadow:
+			0 18px 34px rgba(0, 0, 0, 0.26),
+			inset 0 1px 0 rgba(255, 249, 233, 0.55);
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+		white-space: nowrap;
+	}
+
+	.alpha-button:hover {
+		transform: translateY(-2px);
+		box-shadow:
+			0 22px 40px rgba(0, 0, 0, 0.32),
+			inset 0 1px 0 rgba(255, 249, 233, 0.6);
 	}
 
 	#highlights {
@@ -322,9 +428,35 @@ import bookCover from '../assets/TheBookOfJacobFrontCover.jpg';
 		}
 	}
 
+	@keyframes alphaSweep {
+		0%,
+		100% {
+			transform: translateX(-55%);
+			opacity: 0.2;
+		}
+
+		50% {
+			transform: translateX(55%);
+			opacity: 0.48;
+		}
+	}
+
 	@media screen and (max-width: 768px) {
 		#hero {
 			padding-top: 0;
+		}
+
+		#alpha-callout {
+			grid-template-columns: 1fr;
+			padding: 1.3rem 1.2rem;
+		}
+
+		.alpha-copy h2 {
+			max-width: 100%;
+		}
+
+		.alpha-button {
+			width: 100%;
 		}
 
 		#highlights {
